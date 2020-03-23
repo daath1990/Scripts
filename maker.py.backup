@@ -4,7 +4,7 @@ import os
 import subprocess
 import multiprocessing
 
-ruta_de_documentos = os.getcwd() 
+ruta_de_documentos = os.getcwd()
 rutes_de_makefile = str(subprocess.check_output(['find',ruta_de_documentos,'-type','d'])).rsplit('\\n')
 pid = os.getpid()
 numFork = 0
@@ -14,7 +14,7 @@ def compiling(ruta):
     print (str(os.getcwd())+": ")
     if os.path.exists('Makefile')==True:
         print("Limpiando")
-        os.system("make distclean")            
+        os.system("make distclean")
     print("Precompilando")
     os.system("qmake")
     print("Compilando")
@@ -23,7 +23,7 @@ def compiling(ruta):
 for ruta in rutes_de_makefile:
     print (str(ruta))
     if ruta != rutes_de_makefile[0] and ruta != rutes_de_makefile[-1]:
-        if pid == 0: 
+        if pid == 0:
             compiling(ruta)
             quit()
         else:
